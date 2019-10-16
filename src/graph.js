@@ -1,5 +1,5 @@
 import Dictionary from "./dictionary.js";
-import Queue from "./queue.js";
+import Queue from "./queue.js/index.js";
 import Stack from "./stack.js";
 
 class Graph {
