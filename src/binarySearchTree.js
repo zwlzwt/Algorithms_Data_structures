@@ -1,4 +1,4 @@
-import { BinaryNode } from './Algorithms&Data_structures/models/linked-list-model.js.js';
+import { BinaryNode } from './models/linked-list-model.js';
 import { compare, defaultCompare } from './utilts.js';
 
 export class BinarySearchTree {
