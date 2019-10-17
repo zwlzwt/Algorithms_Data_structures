@@ -1,6 +1,10 @@
 import { defaultEquals, defaultCompare, compare } from "./utilts.js";
 import { quickSort } from "./sorting.js";
 
+function lesserOrEquals(a, b, compareFn) {
+  return compareFn(a, b) === compare.LESS_THAN || compareFn(a, b) === compare.EQUALS;
+}
+
 //  sequential search
 const DO_NOT_EXIST = null;
 function sequentialSearch(array, value, equalsFn=defaultEquals) {
@@ -13,11 +17,6 @@ function sequentialSearch(array, value, equalsFn=defaultEquals) {
 }
 
 // binary search
-function lesserOrEquals(a, b, compareFn) {
-  const comp = compareFn(a, b);
-  return comp === compare.LESS_THAN || comp === compare.EQUALS;
-}
-
 function binarySearch(array, value, compareFn=defaultCompare) {
   // first of all we need sort the array
   const sortedArray = quickSort(array);
@@ -36,6 +35,5 @@ function binarySearch(array, value, compareFn=defaultCompare) {
   } 
   return DO_NOT_EXIST;
 }
-
 
 
