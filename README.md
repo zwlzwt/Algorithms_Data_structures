@@ -7,17 +7,44 @@ Algorithms_Data_structures
   * Hero_Lineups
   * Stack
   * Queue
+    * Double_end_queue
+    * Queue
   * Linked_List
+    * Linked_List
+    * Doubly_ Linked_List
+    * Circular_Linked_List
   * Set
   * Dictionary
   * HashTable
   * Tree
+    * Binary_search_tree
+    * Average_level_tree
+    * Red_Black_tree
   * Graph
+    * Graph
+    * Breadth_first_search
+    * Depth_first_search
   * Heap
+    * Min_heap
+    * Max_heap
+    * Heap_sort
   * Sorting
+    * Bubble
+    * Selection
+    * Insert
+    * Merge
+    * Quick
+    * Counting sort(Integer)
+    * Bucket sort(Integer)
+    * Radix sort(Integer)
   * Shortest_way
+    * Dijkstra_Algorithm
   * Search
+    * Sequential_search
+    * Binary_search
   * Fibonacci
+  * Shuffle (fisher_yates)
+
 
 #### run and checkout the results
 
