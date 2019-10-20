@@ -49,6 +49,9 @@ Algorithms_Data_structures
     * knapsack
     * LCS
     * Matrix_Chain_Order
+  * Back_Tracking
+    * Rat_in_a_maze
+    * Sudo_solver
 
 
 #### run and checkout the results
