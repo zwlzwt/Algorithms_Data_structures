@@ -44,6 +44,11 @@ Algorithms_Data_structures
     * Binary_search
   * Fibonacci
   * Shuffle (fisher_yates)
+  * Dynamic_Programming
+    * Min_Coin_Change
+    * knapsack
+    * LCS
+    * Matrix_Chain_Order
 
 
 #### run and checkout the results
