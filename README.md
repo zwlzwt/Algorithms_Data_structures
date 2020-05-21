@@ -2,7 +2,15 @@ Algorithms_Data_structures
 =============
 ![](https://img.shields.io/badge/node-%3E8.16.2-green?style=flat)
 ![](https://img.shields.io/badge/language-Javascript-blue?style=flat)
-
+  * InversePairs
+  * deckOfCards
+  * knockoutTournament
+  * max_request
+  * stackToQueue
+  * convertCsvToJson
+  * convertAndSortArray
+  * groupCitiesByRotatedName
+  * LRU.js
   * Bfr_Measure
   * Hero_Lineups
   * Stack
