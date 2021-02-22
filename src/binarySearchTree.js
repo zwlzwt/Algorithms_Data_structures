@@ -1,8 +1,8 @@
-import { BinaryNode } from './models/linked-list-model.js';
-import { compare, defaultCompare } from './utilts.js';
+import { BinaryNode } from "./models/linked-list-model.js";
+import { compare, defaultCompare } from "./utilts.js";
 
 export class BinarySearchTree {
-  constructor(compareFn=defaultCompare) {
+  constructor(compareFn = defaultCompare) {
     this.compareFn = compareFn;
     this.root = null;
   }
@@ -10,12 +10,11 @@ export class BinarySearchTree {
   insert(key) {
     if (this.root === null) {
       this.root = new BinaryNode(key);
-    }else {
+    } else {
       this.insertNode(this.root, key);
     }
   }
-  
-  
+
   insertNode(node, key) {
     if (this.compareFn(key, node.element) === compare.LESS_THAN) {
       if (node.left === null) {
@@ -54,7 +53,7 @@ export class BinarySearchTree {
 
   minNode(node) {
     let current = node;
-    while(current !== null && current.left !== null) {
+    while (current !== null && current.left !== null) {
       current = current.left;
     }
     return current;
@@ -82,7 +81,7 @@ export class BinarySearchTree {
     }
     if (this.compareFn(key, node.element) === compare.LESS_THAN) {
       return this.searchNode(node.left, key);
-    } else if(this.compareFn(key, node.element) === compare.BIGGER_THAN) {
+    } else if (this.compareFn(key, node.element) === compare.BIGGER_THAN) {
       return this.searchNode(node.right, key);
     } else {
       return true;
@@ -104,16 +103,14 @@ export class BinarySearchTree {
     if (this.compareFn(key, node.element) === compare.BIGGER_THAN) {
       node.right = this.removeNode(node.right, key);
       return node;
-    }
-    else {
+    } else {
       if (node.left === null && node.right === null) {
         node = null;
         return node;
-      }
-      else if(node.left === null) {
+      } else if (node.left === null) {
         node = node.right;
         return node;
-      } else if(node.right === null) {
+      } else if (node.right === null) {
         node = node.left;
         return node;
       } else {
@@ -122,7 +119,6 @@ export class BinarySearchTree {
         node.right = this.removeNode(node.right, aux.element);
         return node;
       }
-      
     }
   }
 }
@@ -142,9 +138,9 @@ tree.insert(20);
 tree.insert(18);
 tree.insert(25);
 tree.insert(6);
-console.log(tree)
+console.log(tree);
 
-const printNode = (element) => console.log(element)
+const printNode = (element) => console.log(element);
 tree.inOrderTraverse(printNode);
 console.log(tree.min());
 console.log(tree.max());

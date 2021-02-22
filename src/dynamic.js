@@ -24,16 +24,15 @@ function minCoinChange(coins, amount) {
         (newMin.length || !newAmount)
       ) {
         min = [coin].concat(newMin);
-        console.log('new Min ' + min + ' for ' + value); 
+        console.log("new Min " + min + " for " + value);
       }
-    } 
-    return cache[value] = min;
-  }
+    }
+    return (cache[value] = min);
+  };
   return makeChange(amount);
 }
 
 console.log(minCoinChange([25, 10, 5, 1], 26));
-
 
 // knapSack
 function knapSack(capacity, weights, values, n) {
@@ -61,19 +60,20 @@ function knapSack(capacity, weights, values, n) {
 
 function findValues(n, capacity, kS, weights, values) {
   let i = n;
-  let k = capacity; 
-  console.log('The all cargos are:'); 
+  let k = capacity;
+  console.log("The all cargos are:");
   while (i > 0 && k > 0) {
     if (kS[i][k] !== kS[i - 1][k]) {
-      console.log(`cargo ${i} in the bag w,v: ${weights[i - 1]}, ${values[i - 1]}`); 
+      console.log(
+        `cargo ${i} in the bag w,v: ${weights[i - 1]}, ${values[i - 1]}`
+      );
       i--;
       k -= kS[i][k];
     } else {
       i--;
     }
   }
-};
-
+}
 
 // knapsack greedy type
 // It can't get the optimal solution
@@ -85,13 +85,12 @@ function knapSackGreedy(capacity, weights, values) {
       load += weights[i];
       totalValues += values[i];
     } else {
-      totalValues += values[i]*(capacity - load)/weights[i];
+      totalValues += (values[i] * (capacity - load)) / weights[i];
       load += weights[i];
     }
   }
-  return totalValues
+  return totalValues;
 }
-
 
 // Recursive type
 function knapSackRecursive(capacity, weights, values, n) {
@@ -101,18 +100,22 @@ function knapSackRecursive(capacity, weights, values, n) {
   if (weights[n - 1] > capacity) {
     return knapSackRecursive(capacity, weights, values, n - 1);
   }
-  const a = values[n - 1] + knapSackRecursive(capacity - weights[n - 1], weights, values, n - 1);
+  const a =
+    values[n - 1] +
+    knapSackRecursive(capacity - weights[n - 1], weights, values, n - 1);
   const b = knapSackRecursive(capacity, weights, values, n - 1);
   return a > b ? a : b;
 }
 
 const values = [4, 10, 15],
-weights = [2, 3, 4],
-capacity = 6,
-n = values.length;
-console.log('knapSack_values:', knapSack(capacity, weights, values, n));
-console.log('knapSackGreedy_values:', knapSackGreedy(capacity, weights, values));
-
+  weights = [2, 3, 4],
+  capacity = 6,
+  n = values.length;
+console.log("knapSack_values:", knapSack(capacity, weights, values, n));
+console.log(
+  "knapSackGreedy_values:",
+  knapSackGreedy(capacity, weights, values)
+);
 
 // Lcs
 function lcs(wordX, wordY) {
@@ -155,8 +158,7 @@ function lcsRecursive(wordX, wordY, m, n) {
   }
 }
 
-console.log(lcsRecursive('acbaed', 'abcadf', 6, 6));
-
+console.log(lcsRecursive("acbaed", "abcadf", 6, 6));
 
 // matrix chain order
 // function matrixChainOrder(p) {

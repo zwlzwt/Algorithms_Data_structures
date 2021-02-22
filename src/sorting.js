@@ -13,37 +13,35 @@ function createNonSortedArray(size) {
 // const swapEs = (array, a, b) => [array[a], array[b]] = [array[b], array[a]];
 
 // bubble
-function bubbleSort(array, compareFn=defaultCompare) {
+function bubbleSort(array, compareFn = defaultCompare) {
   for (let i = 0; i < array.length; i++) {
     //  optimization minus sorted value
-    for (let j = 0; j < array.length-1-i; j++) {
-      if (compareFn(array[j], array[j+1]) === compare.BIGGER_THAN) {
-        swap(array, j, j+1);
-      }          
+    for (let j = 0; j < array.length - 1 - i; j++) {
+      if (compareFn(array[j], array[j + 1]) === compare.BIGGER_THAN) {
+        swap(array, j, j + 1);
+      }
     }
   }
   return array;
 }
 
-
-let arrayBubble = createNonSortedArray(10); 
-console.log(arrayBubble.join()); 
-arrayBubble = bubbleSort(arrayBubble); 
+let arrayBubble = createNonSortedArray(10);
+console.log(arrayBubble.join());
+arrayBubble = bubbleSort(arrayBubble);
 console.log(arrayBubble.join());
 
-
 // selection sort
-function selectionSort(array, compareFn=defaultCompare) {
+function selectionSort(array, compareFn = defaultCompare) {
   const { length } = array;
   let minIndex;
-  for (let i = 0; i < length-1; i++) {
+  for (let i = 0; i < length - 1; i++) {
     minIndex = i;
     for (let j = i; j < length; j++) {
       if (compareFn(array[minIndex], array[j]) === compare.BIGGER_THAN) {
         minIndex = j;
       }
     }
-    if (minIndex!==i) {
+    if (minIndex !== i) {
       swap(array, minIndex, i);
     }
   }
@@ -56,13 +54,13 @@ arraySelection = selectionSort(arraySelection);
 console.log(arraySelection.join());
 
 // insert sort
-function insertSort(array, compareFn=defaultCompare) {
+function insertSort(array, compareFn = defaultCompare) {
   const { length } = array;
   for (let i = 0; i < length; i++) {
     let j = i;
     let temp = array[i];
-    while (j < length-1 && compareFn(temp, j+1)===compare.BIGGER_THAN) {
-      array[i] = array[j+1];
+    while (j < length - 1 && compareFn(temp, j + 1) === compare.BIGGER_THAN) {
+      array[i] = array[j + 1];
       j++;
     }
     array[j] = temp;
@@ -75,10 +73,10 @@ arrayInsert = insertSort(arrayInsert);
 console.log(arrayInsert.join());
 
 // merge sort
-function mergeSort(array, compareFn=defaultCompare) {
+function mergeSort(array, compareFn = defaultCompare) {
   if (array.length > 1) {
     const { length } = array;
-    const middle = Math.floor(length/2);
+    const middle = Math.floor(length / 2);
     const left = mergeSort(array.slice(0, middle), compareFn);
     const right = mergeSort(array.slice(middle, length), compareFn);
     array = merge(left, right, compareFn);
@@ -92,9 +90,11 @@ function merge(left, right, compareFn) {
   const result = [];
   while (i < left.length && j < right.length) {
     result.push(
-      compareFn(left[i], right[j]) === compare.LESS_THAN ? left[i++] : right[j++]
+      compareFn(left[i], right[j]) === compare.LESS_THAN
+        ? left[i++]
+        : right[j++]
     );
-  };
+  }
   // merge rest array
   return result.concat(i < left.length ? left.slice(i) : right.slice(j));
 }
@@ -104,7 +104,7 @@ arrayMerge = mergeSort(arrayMerge);
 console.log(arrayMerge.join());
 
 // quick sort
-export function quickSort(array, compareFn=defaultCompare) {
+export function quickSort(array, compareFn = defaultCompare) {
   return quick(array, 0, array.length - 1, compareFn);
 }
 
@@ -112,8 +112,8 @@ function quick(array, left, right, compareFn) {
   let index;
   if (array.length > 1) {
     index = partition(array, left, right, compareFn);
-    if (left < index-1) {
-      quick(array, left, index-1, compareFn);
+    if (left < index - 1) {
+      quick(array, left, index - 1, compareFn);
     }
     if (index < right) {
       quick(array, index, right, compareFn);
@@ -129,12 +129,12 @@ function partition(array, left, right, compareFn) {
   let j = right;
   while (i <= j) {
     while (compareFn(array[i], pivot) === compare.LESS_THAN) {
-      i++
+      i++;
     }
     while (compareFn(array[j], pivot) === compare.BIGGER_THAN) {
-      j--
+      j--;
     }
-    if (i<=j) {
+    if (i <= j) {
       swap(array, i, j);
       i++;
       j--;
@@ -148,7 +148,6 @@ console.log(arrayQuick.join());
 arrayQuick = quickSort(arrayQuick);
 console.log(arrayQuick.join());
 
-
 // counting sort only use for Integer, if max value too large, O(n+k) The k range will also be large
 function countingSort(array) {
   if (array.length < 2) {
@@ -157,7 +156,7 @@ function countingSort(array) {
   const maxValue = findMaxValue(array);
 
   const counts = new Array(maxValue + 1).fill(0);
-  array.forEach(element => {
+  array.forEach((element) => {
     counts[element]++;
   });
   let sortedIndex = 0;
@@ -180,17 +179,17 @@ function findMaxValue(array) {
   return max;
 }
 
-let arrayCounting = [4,7,9,12,11,10,8,5,3];
+let arrayCounting = [4, 7, 9, 12, 11, 10, 8, 5, 3];
 console.log(arrayCounting.join());
 arrayCounting = countingSort(arrayCounting);
 console.log(arrayCounting.join());
 
 // bucket sort
-function bucketSort(array, bucketSize=5) {
+function bucketSort(array, bucketSize = 5) {
   if (array.length < 2) {
     return array;
   }
-  const buckets = createBuckets(array, bucketSize); 
+  const buckets = createBuckets(array, bucketSize);
   return sortBuckets(buckets);
 }
 
@@ -211,7 +210,7 @@ function createBuckets(array, bucketSize) {
   for (let i = 0; i < bucketCount; i++) {
     buckets[i] = [];
   }
-  for (let i = 0; i < array.length; i++) { 
+  for (let i = 0; i < array.length; i++) {
     const bucketIndex = Math.floor((array[i] - minValue) / bucketSize);
     buckets[bucketIndex].push(array[i]);
   }
@@ -230,9 +229,9 @@ function sortBuckets(buckets) {
 }
 
 let arrayBuckets = [4, 7, 9, 12, 11, 10, 8, 5, 90, 24, 56];
-console.log(arrayBuckets .join());
+console.log(arrayBuckets.join());
 arrayBuckets = bucketSort(arrayBuckets);
-console.log(arrayBuckets .join());
+console.log(arrayBuckets.join());
 
 // radix sort
 function findMinValue(array) {
@@ -252,9 +251,9 @@ function radixSort(array, radixBase = 10) {
   }
   const minValue = findMinValue(array);
   const maxValue = findMaxValue(array);
-  let significantDigit = 1; 
+  let significantDigit = 1;
   // Repeat every radixBase
-  while ((maxValue - minValue) / significantDigit >= 1) { 
+  while ((maxValue - minValue) / significantDigit >= 1) {
     array = countingSortForRadix(array, radixBase, significantDigit, minValue);
     significantDigit *= radixBase;
   }
@@ -269,7 +268,9 @@ function countingSortForRadix(array, radixBase, significantDigit, minValue) {
     buckets[i] = 0;
   }
   for (let i = 0; i < array.length; i++) {
-    bucketsIndex = Math.floor(((array[i] - minValue) / significantDigit) % radixBase);
+    bucketsIndex = Math.floor(
+      ((array[i] - minValue) / significantDigit) % radixBase
+    );
     buckets[bucketsIndex]++;
   }
   // Calculate the number of digits in each position plus the previous position
@@ -277,7 +278,9 @@ function countingSortForRadix(array, radixBase, significantDigit, minValue) {
     buckets[i] += buckets[i - 1];
   }
   for (let i = array.length - 1; i >= 0; i--) {
-    bucketsIndex = Math.floor(((array[i] - minValue) / significantDigit) % radixBase);
+    bucketsIndex = Math.floor(
+      ((array[i] - minValue) / significantDigit) % radixBase
+    );
     console.log(buckets);
     // reduce the number of each digit by one.
     aux[--buckets[bucketsIndex]] = array[i];
