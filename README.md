@@ -60,8 +60,6 @@ Algorithms_Data_structures
   * Back_Tracking
     * Rat_in_a_maze
     * Sudo_solver
-  * Game_interview
-    
 
 
 #### run and checkout the results
